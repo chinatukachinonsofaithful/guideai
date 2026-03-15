@@ -2,14 +2,39 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="/guideai.png" />
+    <link rel="icon" type="image/png" href="/guideai-logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>GuideAI</title>
-  </head>
-  <body>
-    <div id="root"></div>
+    <title>GuideAI — Your Personal Study Assistant</title>
 
-    <!-- Theme: run before React to prevent flash -->
+    <!-- SEO -->
+    <meta
+      name="description"
+      content="GuideAI is a free AI-powered study assistant that explains any topic with clear definitions, simple explanations, real life examples and key points."
+    />
+    <meta
+      name="keywords"
+      content="AI tutor, study assistant, learning tool, education AI, GuideAI, Chinonso Chinatuka"
+    />
+    <meta name="author" content="Chinonso Faithful Chinatuka" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph -->
+    <meta
+      property="og:title"
+      content="GuideAI — Your Personal Study Assistant"
+    />
+    <meta
+      property="og:description"
+      content="Ask any topic and get a structured, clear explanation from your AI study assistant."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://guideai-eight.vercel.app" />
+    <meta
+      property="og:image"
+      content="https://guideai-eight.vercel.app/guideai-logo.png"
+    />
+
+    <!-- Theme script -->
     <script>
       (function () {
         const saved = localStorage.getItem("guideai_theme");
@@ -26,7 +51,9 @@
         }
       })();
     </script>
-
+  </head>
+  <body>
+    <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
