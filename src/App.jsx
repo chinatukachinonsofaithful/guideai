@@ -18,7 +18,7 @@ function Layout() {
       <div className="text-center text-[10px] text-gray-400 dark:text-gray-500 py-1">
         GuideAI —{" "}
         <a
-          href="https://www.linkedin.com/in/chinatukachinonsofaithful/"
+          href="https://chinonsofaithfulchinatuka.vercel.app/"
           target="_blank"
           rel="noopener noreferrer"
           className="hover:text-blue-400 transition-colors duration-150 underline underline-offset-2"
