@@ -16,7 +16,15 @@ function Layout() {
       </main>
       {/* Add between </main> and the input div */}
       <div className="text-center text-[10px] text-gray-400 dark:text-gray-500 py-1">
-        GuideAI — Developed by Chinonso Faithful Chinatuka
+        GuideAI —{" "}
+        <a
+          href="https://www.linkedin.com/in/chinatukachinonsofaithful/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hover:text-blue-400 transition-colors duration-150 underline underline-offset-2"
+        >
+          Developed by Chinonso Faithful Chinatuka
+        </a>
       </div>
       <div className="w-full bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700">
         <div className="max-w-3xl w-full mx-auto">
