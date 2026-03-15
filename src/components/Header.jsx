@@ -132,16 +132,12 @@ export default function Header() {
     >
       <div className="max-w-3xl mx-auto flex items-center justify-between">
         {/* Title */}
-        <div className="flex items-center gap-2">
-          <span className="text-xl">🎓</span>
-          <div>
-            <h1 className="text-base font-bold text-gray-900 dark:text-white leading-tight">
-              GuideAI
-            </h1>
-            <p className="text-[10px] text-gray-400 dark:text-gray-500 leading-tight">
-              Your personal study assistant
-            </p>
-          </div>
+        <div className="flex items-center">
+          <img
+            src="/guideai-logo.png"
+            alt="GuideAI Logo"
+            className="h-8 object-contain"
+          />
         </div>
 
         {/* Controls */}

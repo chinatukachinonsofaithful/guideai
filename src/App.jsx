@@ -14,7 +14,10 @@ function Layout() {
           <StudyResponse />
         </div>
       </main>
-
+      {/* Add between </main> and the input div */}
+      <div className="text-center text-[10px] text-gray-400 dark:text-gray-500 py-1">
+        GuideAI — Developed by Chinonso Faithful Chinatuka
+      </div>
       <div className="w-full bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700">
         <div className="max-w-3xl w-full mx-auto">
           <StudyInput />

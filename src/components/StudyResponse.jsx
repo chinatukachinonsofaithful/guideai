@@ -67,7 +67,14 @@ export default function StudyResponse() {
         {/* Empty state */}
         {messages.length === 0 && !loading && (
           <div className="flex flex-col items-center justify-center h-full text-center gap-2 opacity-50">
-            <span className="text-4xl">🎓</span>
+            <span className="text-4xl">
+              {" "}
+              <img
+                src="/guideai-logo.png"
+                alt="GuideAI Logo"
+                className="h-8 object-contain"
+              />
+            </span>
             <p className="text-gray-500 dark:text-gray-400 text-sm">
               Ask anything to get started!
             </p>
