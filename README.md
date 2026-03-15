@@ -157,13 +157,3 @@ Visit `http://localhost:5173` in your browser.
 GitHub: [@chinatukachinonsofaithful](https://github.com/chinatukachinonsofaithful)
 
 ---
-
-## Built With Help From
-
-This project was designed and built in collaboration with [Claude](https://claude.ai) by Anthropic.
-
----
-
-## License
-
-This project is open source and available under the [MIT License](LICENSE).
