@@ -51,15 +51,18 @@ export const ChatProvider = ({ children }) => {
       setLoading(true);
       setError(null);
       try {
-        const res = await fetch("http://localhost:5000/api/ask", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            prompt,
-            // Send history — only role and content, no UI metadata
-            history: messages.map(({ role, content }) => ({ role, content })),
-          }),
-        });
+        const res = await fetch(
+          "https://guideai-backend.onrender.com/api/ask",
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              prompt,
+              // Send history — only role and content, no UI metadata
+              history: messages.map(({ role, content }) => ({ role, content })),
+            }),
+          },
+        );
 
         if (!res.ok) {
           const errData = await res.json().catch(() => ({}));
