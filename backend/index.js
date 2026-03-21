@@ -21,10 +21,16 @@ const client = ModelClient(
 );
 
 app.post("/api/ask", async (req, res) => {
-  const { prompt, history = [] } = req.body; // ← receive history
+  const { prompt, history = [] } = req.body;
+
+  res.setHeader("Content-Type", "text/event-stream");
+  res.setHeader("Cache-Control", "no-cache");
+  res.setHeader("Connection", "keep-alive");
+  res.flushHeaders();
 
   const timeout = setTimeout(() => {
-    res.status(504).json({ error: "Request timed out" });
+    res.write(`data: ${JSON.stringify({ error: "Request timed out" })}\n\n`);
+    res.end();
   }, 60000);
 
   try {
@@ -94,12 +100,13 @@ Your Mission:
 You exist to make studying less stressful, more effective and more accessible for every student. Every response should leave the user feeling more confident and capable than before they asked.
 `,
           },
-          ...history, // ← inject conversation history
+          ...history,
           { role: "user", content: prompt },
         ],
         temperature: 0.7,
-        max_tokens: 500,
+        max_tokens: 1000,
         model: model,
+        stream: true,
       },
     });
 
@@ -109,17 +116,40 @@ You exist to make studying less stressful, more effective and more accessible fo
       throw response.body.error;
     }
 
-    const reply = response.body.choices[0].message.content;
-    res.json({ output: reply });
+    // Azure SDK returns body as async iterable of strings
+    for await (const rawChunk of response.body) {
+      console.log("RAW CHUNK:", rawChunk.toString());
+      // rawChunk is a string like "data: {...}\n\n"
+      const lines = rawChunk.toString().split("\n");
+
+      for (const line of lines) {
+        const trimmed = line.trim();
+        if (!trimmed || !trimmed.startsWith("data:")) continue;
+
+        const data = trimmed.replace(/^data:\s*/, "");
+        if (data === "[DONE]") {
+          res.write(`data: [DONE]\n\n`);
+          continue;
+        }
+
+        try {
+          const parsed = JSON.parse(data);
+          const text = parsed.choices?.[0]?.delta?.content;
+          if (text) {
+            res.write(`data: ${JSON.stringify({ chunk: text })}\n\n`);
+          }
+        } catch {
+          // Skip malformed chunks
+        }
+      }
+    }
+
+    res.write(`data: [DONE]\n\n`);
+    res.end();
   } catch (error) {
     clearTimeout(timeout);
     console.error("Backend error:", error);
-    res
-      .status(500)
-      .json({ error: "AI request failed", details: error.message });
+    res.write(`data: ${JSON.stringify({ error: "AI request failed" })}\n\n`);
+    res.end();
   }
-});
-
-app.listen(PORT, () => {
-  console.log(`Backend running on http://localhost:${PORT}`);
 });
