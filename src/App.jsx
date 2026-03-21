@@ -3,6 +3,7 @@ import { ThemeProvider } from "./context/ThemeContext";
 import StudyInput from "./components/StudyInput";
 import StudyResponse from "./components/StudyResponse";
 import Header from "./components/Header";
+import { Analytics } from "@vercel/analytics/react";
 
 function Layout() {
   return (
@@ -40,6 +41,7 @@ function App() {
     <ThemeProvider>
       <ChatProvider>
         <Layout />
+        <Analytics />
       </ChatProvider>
     </ThemeProvider>
   );
