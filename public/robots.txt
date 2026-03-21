@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://guideai-eight.vercel.app/sitemap.xml
+Sitemap: https://guideai-ai.vercel.app/sitemap.xml
