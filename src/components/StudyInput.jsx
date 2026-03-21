@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { useChat } from "../context/ChatContext";
 
-export default function StudyInput() {
+export default function StudyInput({ suggestionText }) {
   const { addMessage, askAI, loading } = useChat();
   const [prompt, setPrompt] = useState("");
   const textareaRef = useRef(null);
@@ -19,6 +19,22 @@ export default function StudyInput() {
     ta.style.height = `${Math.min(ta.scrollHeight, 160)}px`;
   }, [prompt]);
 
+  // When a suggestion is clicked — auto submit it
+  useEffect(() => {
+    if (!suggestionText) return;
+    handleSuggestion(suggestionText);
+  }, [suggestionText]);
+
+  const handleSuggestion = async (text) => {
+    if (!text || loading) return;
+    addMessage("user", text);
+
+    const answer = await askAI(text);
+    if (answer) {
+      addMessage("assistant", answer);
+    }
+  };
+
   const handleSubmit = async (e) => {
     e?.preventDefault();
     const trimmed = prompt.trim();
@@ -27,7 +43,6 @@ export default function StudyInput() {
     addMessage("user", trimmed);
     setPrompt("");
 
-    // Reset textarea height after clearing
     if (textareaRef.current) {
       textareaRef.current.style.height = "auto";
     }
@@ -43,7 +58,6 @@ export default function StudyInput() {
       e.preventDefault();
       handleSubmit();
     }
-    // Shift+Enter naturally inserts newline — no handling needed
   };
 
   const isEmpty = !prompt.trim();
@@ -71,7 +85,6 @@ export default function StudyInput() {
             style={{ minHeight: "48px", maxHeight: "160px" }}
           />
 
-          {/* Character hint — only shows when typing */}
           {prompt.length > 0 && (
             <span className="absolute bottom-2 right-3 text-[10px] text-gray-400 dark:text-gray-500 pointer-events-none">
               ⇧↵ new line
@@ -96,7 +109,6 @@ export default function StudyInput() {
             }`}
         >
           {loading ? (
-            // Spinner
             <svg
               className="animate-spin w-5 h-5 text-white dark:text-gray-300"
               xmlns="http://www.w3.org/2000/svg"
@@ -118,7 +130,6 @@ export default function StudyInput() {
               />
             </svg>
           ) : (
-            // Send arrow
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -131,7 +142,6 @@ export default function StudyInput() {
         </button>
       </div>
 
-      {/* Mobile hint */}
       <p className="text-center text-[10px] text-gray-400 dark:text-gray-600 mt-2 sm:hidden">
         Tap ↑ to send
       </p>

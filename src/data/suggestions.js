@@ -1,0 +1,111 @@
+const SUGGESTION_BANK = [
+  // Biology
+  "Explain photosynthesis like I'm a university student",
+  "What is the difference between mitosis and meiosis?",
+  "Explain how the human immune system works",
+  "Break down the human digestive system",
+  "What is DNA and how does it work?",
+  "Explain how the heart pumps blood through the body",
+  "What is the difference between prokaryotic and eukaryotic cells?",
+  "Explain the concept of natural selection",
+  "What is osmosis and how does it work?",
+  "Break down the human nervous system",
+
+  // Physics
+  "Break down Newton's laws of motion",
+  "What is the difference between AC and DC current?",
+  "Explain Ohm's Law and how it works",
+  "What is the concept of momentum in physics?",
+  "Explain how electromagnetic waves work",
+  "What is the difference between speed and velocity?",
+  "Break down the laws of thermodynamics",
+  "Explain how nuclear fission works",
+  "What is gravitational potential energy?",
+  "Explain how a transformer works",
+
+  // Chemistry
+  "What is the difference between ionic and covalent bonds?",
+  "Explain the periodic table and how it is organized",
+  "What is a chemical equilibrium?",
+  "Break down the concept of pH and acidity",
+  "Explain how electrolysis works",
+  "What is the difference between oxidation and reduction?",
+  "Explain Avogadro's law in simple terms",
+  "What is a catalyst and how does it work?",
+  "Break down the concept of molar mass",
+  "Explain how atomic orbitals work",
+
+  // Economics
+  "What is supply and demand in economics?",
+  "Explain the concept of opportunity cost",
+  "What is inflation and how does it affect me?",
+  "Break down the concept of GDP",
+  "Explain how the Nigerian stock exchange works",
+  "What is the difference between microeconomics and macroeconomics?",
+  "Explain what a budget deficit means",
+  "What is monetary policy and how does it work?",
+  "Break down the concept of comparative advantage",
+  "Explain what foreign exchange rates mean",
+
+  // History & Government
+  "Break down the causes of World War I",
+  "Explain the French Revolution in simple terms",
+  "What is federalism and how does Nigeria practice it?",
+  "Explain how a bill becomes a law in Nigeria",
+  "What caused the Nigerian Civil War?",
+  "Explain the concept of democracy and its types",
+  "What is the role of the Nigerian Senate?",
+  "Break down the causes and effects of colonialism in Africa",
+  "Explain the concept of separation of powers",
+  "What is the United Nations and what does it do?",
+
+  // Mathematics
+  "What is the Pythagorean theorem and how is it used?",
+  "Explain the concept of differentiation in calculus",
+  "What is a matrix and how is it used in mathematics?",
+  "Break down the concept of probability",
+  "Explain what a logarithm is and how it works",
+  "What is the difference between permutation and combination?",
+  "Explain the concept of integration in calculus",
+  "What is a quadratic equation and how do you solve it?",
+  "Break down the concept of set theory",
+  "Explain what vectors are and how they work",
+
+  // Computer Science
+  "What is the difference between RAM and ROM?",
+  "Explain how the internet works in simple terms",
+  "What is object oriented programming?",
+  "Break down the concept of algorithms and data structures",
+  "What is the difference between HTTP and HTTPS?",
+  "Explain what a database is and how it works",
+  "What is machine learning in simple terms?",
+  "Break down the concept of binary numbers",
+  "Explain what an operating system does",
+  "What is the difference between frontend and backend development?",
+
+  // English Language
+  "What is the difference between a phrase and a clause?",
+  "Explain the concept of tenses in English grammar",
+  "What is the difference between active and passive voice?",
+  "Break down the types of figures of speech",
+  "What is the difference between a simile and a metaphor?",
+  "Explain what a thesis statement is and how to write one",
+  "What is the difference between denotation and connotation?",
+  "Break down the structure of a well written essay",
+  "What is the difference between formal and informal writing?",
+  "Explain the concept of comprehension and summary writing",
+
+  // General Knowledge
+  "Explain how the global economy works",
+  "What is climate change and why does it matter?",
+  "Explain the concept of artificial intelligence",
+  "What is entrepreneurship and what does it take?",
+  "Explain how social media algorithms work",
+  "What is mental health and why is it important?",
+  "Break down how vaccines work",
+  "Explain what blockchain technology is",
+  "What is the difference between a developed and developing country?",
+  "Explain how to manage personal finances as a student",
+];
+
+export default SUGGESTION_BANK;
